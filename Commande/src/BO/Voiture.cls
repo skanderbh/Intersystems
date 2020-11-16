@@ -22,15 +22,15 @@ Method creerVoiture(pRequest As msg.creerVoitureDmde, Output pResponse As msg.cr
 
 Method supprimerVoiture(pRequest As msg.supprimerVoitureDmde, Output pResponse As msg.supprimerVoitureRpse) As %Status
 {
-    
+
     set pResponse = ##class(msg.supprimerVoitureRpse).%New()
-    if(##class(data.voiture).consulterParPlaqueExists(pRequest.plaque , .idVoiture)){
+    if (##class(data.voiture).consulterParPlaqueExists(pRequest.plaque , .idVoiture)){
         do ##class(data.Voiture).%DeleteID(idVoiture) 
         set pResponse.codeRetour = "OK"
     }
     else{
         set pResponse.codeRetour = "KO"
-        
+
     }
 
 
